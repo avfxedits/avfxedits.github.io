@@ -1,222 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AVFX</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+<title>AVFX — Artistic Visual Effects</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{
-font-family:'Montserrat',sans-serif;
-background:#060912;
-color:#fff;
-overflow-x:hidden;
-}
+body{font-family:'Montserrat',sans-serif;background:#05070c;color:#fff}/* BACKGROUND */ .bg{position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 20% 30%,#1e40af55,transparent 45%),radial-gradient(circle at 80% 70%,#2563eb55,transparent 40%),linear-gradient(180deg,#05070c,#020409)}
 
-/* BACKGROUND */
-.bg{
-position:fixed;inset:0;z-index:-2;
-background:
-radial-gradient(circle at 15% 20%,#1e40af55,transparent 45%),
-radial-gradient(circle at 85% 75%,#2563eb55,transparent 40%),
-linear-gradient(180deg,#05070c,#020409);
-}
+/* HERO */ .hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:14px} .hero h1{font-size:clamp(4rem,14vw,7rem);font-weight:900;letter-spacing:10px} .hero .sub{font-size:.75rem;letter-spacing:4px;color:#9fb5ff} .hero .tag{font-size:.85rem;letter-spacing:2px;opacity:.9}
 
-/* HERO */
-.hero{
-height:85vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-position:relative;
-}
-.hero h1{
-font-size:clamp(4rem,10vw,7rem);
-font-weight:900;
-letter-spacing:10px;
-}
-.hero .sub{
-font-size:.7rem;
-letter-spacing:4px;
-color:#9fb5ff;
-margin-top:6px;
-}
-.hero .tag{
-font-size:.75rem;
-letter-spacing:3px;
-opacity:.9;
-margin-top:4px;
-}
+/* VISUAL ICON BAR */ .icon-bar{display:flex;gap:26px;margin-top:28px} .icon-bar i{font-size:1.8rem;color:#6aa7ff;opacity:.9}
 
-/* EDITOR HUD */
-.hud{
-position:absolute;
-inset:0;
-pointer-events:none;
-}
-.hud span{
-position:absolute;
-border:1px solid #6aa7ff55;
-border-radius:14px;
-padding:8px 14px;
-font-size:.55rem;
-letter-spacing:2px;
-color:#9fb5ff;
-background:#05070ccc;
-}
-.hud .a{top:18%;left:12%}
-.hud .b{top:22%;right:14%}
-.hud .c{bottom:24%;left:16%}
+/* EDITOR PANEL */ .panel{max-width:900px;margin:60px auto;padding:40px;border-radius:26px;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(16px)} .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;text-align:center} .grid i{font-size:2.6rem;color:#6aa7ff;margin-bottom:12px} .grid div{font-size:.7rem;letter-spacing:2px}
 
-/* VISUAL SOFTWARE PANEL */
-.software{
-margin-top:45px;
-display:flex;
-justify-content:center;
-gap:26px;
-}
-.soft{
-width:62px;height:62px;
-border-radius:18px;
-background:linear-gradient(180deg,#1e293b,#020617);
-border:1px solid #6aa7ff55;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:1.6rem;
-color:#6aa7ff;
-}
+/* TOOLS STRIP */ .tools{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin:40px 0} .tool{padding:10px 20px;border-radius:40px;border:1px solid #6aa7ff55;font-size:.65rem;letter-spacing:1.5px;color:#cfe0ff;background:#0b1224}
 
-/* MAIN EDIT PANEL */
-.panel{
-max-width:1100px;
-margin:auto;
-padding:50px 20px;
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:22px;
-}
-.block{
-background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.02));
-border:1px solid rgba(255,255,255,.18);
-border-radius:22px;
-padding:30px;
-text-align:center;
-backdrop-filter:blur(14px);
-}
-.block i{
-font-size:2.4rem;
-color:#6aa7ff;
-margin-bottom:12px;
-}
-.block small{
-font-size:.6rem;
-letter-spacing:2px;
-opacity:.8;
-}
+/* LINKS */ .links{display:flex;justify-content:center;gap:18px;margin:40px 0} .links a{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(90deg,#6aa7ff,#9fb5ff);color:#05070c;font-size:1.4rem;text-decoration:none}
 
-/* GRAPH / TIMELINE DECOR */
-.timeline{
-max-width:900px;
-margin:40px auto;
-height:70px;
-border-radius:20px;
-background:linear-gradient(90deg,#1e3a8a55,#020617);
-border:1px solid #6aa7ff55;
-position:relative;
-}
-.timeline::before{
-content:'';
-position:absolute;
-left:20%;
-top:15%;
-height:70%;
-width:2px;
-background:#6aa7ff;
-}
-.timeline::after{
-content:'';
-position:absolute;
-right:30%;
-top:30%;
-height:40%;
-width:2px;
-background:#9fb5ff;
-}
+footer{text-align:center;font-size:.6rem;letter-spacing:1px;opacity:.7;padding-bottom:20px} </style>
 
-/* LINKS */
-.links{
-display:flex;
-justify-content:center;
-gap:28px;
-padding:40px 0;
-}
-.links a{
-width:58px;height:58px;
-border-radius:50%;
-background:#0b1224;
-border:1px solid #6aa7ff55;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:1.4rem;
-color:#9fb5ff;
-}
-
-footer{
-text-align:center;
-padding:16px;
-font-size:.6rem;
-opacity:.6;
-}
-</style>
 </head>
-
 <body>
-<div class="bg"></div>
-
-<section class="hero">
-<div class="hud">
-<span class="a">TIMELINE</span>
-<span class="b">MASK</span>
-<span class="c">COLOR</span>
-</div>
-
-<div>
+<div class="bg"></div><section class="hero">
 <h1>AVFX</h1>
 <div class="sub">ARTISTIC VISUAL EFFECTS</div>
 <div class="tag">EDITS THAT HIT DIFFERENT</div>
-
-<div class="software">
-<div class="soft"><i class="fa-solid fa-scissors"></i></div>
-<div class="soft"><i class="fa-solid fa-wave-square"></i></div>
-<div class="soft"><i class="fa-solid fa-layer-group"></i></div>
-<div class="soft"><i class="fa-solid fa-droplet"></i></div>
+<div class="icon-bar">
+<i class="fa-solid fa-film"></i>
+<i class="fa-solid fa-scissors"></i>
+<i class="fa-solid fa-layer-group"></i>
+<i class="fa-solid fa-wave-square"></i>
+<i class="fa-solid fa-sliders"></i>
 </div>
+</section><section class="panel">
+<div class="grid">
+<div><i class="fa-solid fa-clapperboard"></i>CINEMATIC</div>
+<div><i class="fa-solid fa-bolt"></i>REELS</div>
+<div><i class="fa-solid fa-gamepad"></i>GAMING</div>
+<div><i class="fa-solid fa-palette"></i>COLOR</div>
 </div>
-</section>
-
-<section class="panel">
-<div class="block"><i class="fa-solid fa-film"></i><small>CINEMATIC</small></div>
-<div class="block"><i class="fa-solid fa-bolt"></i><small>REELS</small></div>
-<div class="block"><i class="fa-solid fa-gamepad"></i><small>GAMING</small></div>
-<div class="block"><i class="fa-solid fa-palette"></i><small>COLOR</small></div>
-</section>
-
-<div class="timeline"></div>
-
-<section class="links">
+</section><div class="tools">
+<div class="tool">CapCut</div>
+<div class="tool">Alight Motion</div>
+<div class="tool">Velocity</div>
+<div class="tool">Masking</div>
+<div class="tool">Motion Blur</div>
+</div><div class="links">
 <a href="https://www.instagram.com/avfx_.176" target="_blank"><i class="fa-brands fa-instagram"></i></a>
 <a href="https://youtube.com/@avfx_.176" target="_blank"><i class="fa-brands fa-youtube"></i></a>
 <a href="mailto:avfx.edits17@gmail.com"><i class="fa-solid fa-envelope"></i></a>
-</section>
-
-<footer>© AVFX</footer>
-
+</div><footer>© AVFX</footer>
 </body>
 </html>
