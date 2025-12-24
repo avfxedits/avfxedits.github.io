@@ -1,225 +1,141 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AVFX</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AVFX — Edits That Hit Different</title>  <!-- Google Font -->  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">  <!-- Icons -->  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+    body{background:#05010a;color:#fff;overflow-x:hidden}
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    /* ================= LOADER ================= */
+    #intro{
+      position:fixed;inset:0;z-index:9999;
+      background:radial-gradient(circle at center,#12001f,#020006);
+      display:flex;align-items:center;justify-content:center;
+      flex-direction:column;
+    }
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap');
+    .lightning{
+      position:absolute;inset:0;
+      background:url('https://i.imgur.com/9Q9ZQZy.png') center/cover no-repeat;
+      opacity:0;animation:flash 1.5s ease forwards;
+    }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Montserrat',sans-serif;
-}
+    @keyframes flash{
+      0%{opacity:0}
+      20%{opacity:1}
+      40%{opacity:0}
+      60%{opacity:1}
+      100%{opacity:0}
+    }
 
-html{scroll-behavior:smooth}
+    .crack{
+      font-size:56px;font-weight:800;letter-spacing:6px;
+      text-shadow:0 0 30px #a855f7;
+      animation:shake 1s ease;
+    }
 
-body{
-  background:linear-gradient(180deg,#050814,#000);
-  color:#fff;
-  overflow-x:hidden;
-}
+    @keyframes shake{
+      0%{transform:translate(0)}
+      25%{transform:translate(-3px,2px)}
+      50%{transform:translate(3px,-2px)}
+      75%{transform:translate(-2px,-3px)}
+      100%{transform:translate(0)}
+    }
 
-/* HERO */
-.hero{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-}
+    /* ================= MAIN ================= */
+    header{
+      min-height:100vh;display:flex;align-items:center;justify-content:center;
+      text-align:center;padding:40px;
+      background:linear-gradient(160deg,#0b0018,#020006);
+    }
 
-.hero h1{
-  font-size:4.5rem;
-  font-weight:900;
-  letter-spacing:7px;
-  text-shadow:0 0 30px #4da3ff;
-}
+    header h1{
+      font-size:64px;font-weight:800;
+      background:linear-gradient(90deg,#a855f7,#ec4899);
+      -webkit-background-clip:text;color:transparent;
+    }
 
-.sub{
-  margin-top:10px;
-  font-size:0.9rem;
-  letter-spacing:6px;
-  opacity:0.6;
-}
+    header p{margin-top:20px;font-size:18px;opacity:.9}
 
-.tagline{
-  margin-top:25px;
-  font-size:1.1rem;
-  letter-spacing:4px;
-  color:#9cc9ff;
-  text-shadow:0 0 18px #4da3ff;
-}
+    .scroll-down{margin-top:60px;font-size:14px;opacity:.6}
 
-/* FLOATING FX */
-.fx{
-  position:absolute;
-  font-size:1.3rem;
-  opacity:0.12;
-  animation:float 9s infinite linear;
-}
+    section{padding:100px 20px;max-width:1100px;margin:auto}
 
-@keyframes float{
-  from{transform:translateY(110vh)}
-  to{transform:translateY(-120vh)}
-}
+    .title{
+      font-size:36px;font-weight:700;margin-bottom:20px;
+    }
 
-/* BLOCKS */
-.block{
-  padding:100px 8%;
-}
+    .subtitle{opacity:.7;margin-bottom:50px}
 
-.block h2{
-  font-size:1.9rem;
-  margin-bottom:30px;
-}
+    .grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:30px
+    }
 
-.line{
-  font-size:1rem;
-  opacity:0.75;
-  margin:14px 0;
-}
+    .card{
+      background:rgba(255,255,255,.05);
+      border-radius:18px;padding:30px;
+      box-shadow:0 0 40px rgba(168,85,247,.15);
+      transition:.3s
+    }
 
-/* TOOLS GRID */
-.tools{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-  gap:30px;
-  margin-top:40px;
-}
+    .card:hover{transform:translateY(-8px)}
 
-.tool{
-  background:rgba(255,255,255,0.04);
-  padding:25px;
-  border-radius:18px;
-  text-align:center;
-  backdrop-filter:blur(12px);
-}
+    .card i{
+      font-size:32px;margin-bottom:20px;
+      color:#ec4899
+    }
 
-.tool i{
-  font-size:2.3rem;
-  margin-bottom:12px;
-  color:#7fb8ff;
-}
+    .handles a{
+      display:flex;align-items:center;gap:12px;
+      padding:18px;border-radius:40px;
+      background:linear-gradient(90deg,#a855f7,#ec4899);
+      color:#fff;text-decoration:none;font-weight:600;
+      margin-bottom:18px;justify-content:center
+    }
 
-/* HANDLES */
-.handles{
-  display:flex;
-  justify-content:center;
-  gap:40px;
-  margin-top:40px;
-}
+    footer{text-align:center;padding:60px 20px;opacity:.6}
 
-.handles a{
-  font-size:2rem;
-  color:#fff;
-  opacity:0.8;
-  transition:0.3s;
-}
-
-.handles a:hover{
-  opacity:1;
-  color:#7fb8ff;
-}
-
-/* CONTACT */
-.contact{
-  text-align:center;
-  padding:120px 10%;
-}
-
-.contact a{
-  display:inline-block;
-  margin-top:30px;
-  padding:14px 34px;
-  border-radius:40px;
-  border:1px solid #7fb8ff;
-  color:#7fb8ff;
-  text-decoration:none;
-  letter-spacing:4px;
-}
-
-.contact a:hover{
-  background:#7fb8ff;
-  color:#000;
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:60px 0;
-  opacity:0.5;
-  font-size:0.85rem;
-}
-</style>
-</head>
-
-<body>
-
-<!-- FLOATING SYMBOLS -->
-<div class="fx" style="left:12%">◇</div>
-<div class="fx" style="left:28%">▢</div>
-<div class="fx" style="left:46%">⚡</div>
-<div class="fx" style="left:63%">◐</div>
-<div class="fx" style="left:80%">⟶</div>
-
-<section class="hero">
-  <h1>AVFX</h1>
-  <div class="sub">ARTISTIC VISUAL EFFECTS</div>
-  <div class="tagline">EDITS THAT HITS DIFFERENT</div>
-</section>
-
-<section class="block">
-  <h2>Visuals Speak</h2>
-  <div class="line">Made on phone. Felt like cinema.</div>
-  <div class="line">Frames over filters.</div>
-  <div class="line">Speed. Flow. Impact.</div>
-</section>
-
-<section class="block">
-  <h2>Editing Language</h2>
-  <div class="tools">
-    <div class="tool"><i class="fa-solid fa-scissors"></i><br>Cut Flow</div>
-    <div class="tool"><i class="fa-solid fa-layer-group"></i><br>Layers</div>
-    <div class="tool"><i class="fa-solid fa-wave-square"></i><br>Speed Ramps</div>
-    <div class="tool"><i class="fa-solid fa-bezier-curve"></i><br>Motion Curves</div>
-    <div class="tool"><i class="fa-solid fa-mask"></i><br>Masks</div>
-    <div class="tool"><i class="fa-solid fa-palette"></i><br>Color FX</div>
-  </div>
-</section>
-
-<section class="block">
-  <h2>Tools I Bend</h2>
-  <div class="tools">
-    <div class="tool"><i class="fa-brands fa-capcut"></i><br>CapCut</div>
-    <div class="tool"><i class="fa-solid fa-play"></i><br>Alight Motion</div>
-    <div class="tool"><i class="fa-solid fa-film"></i><br>VN</div>
-    <div class="tool"><i class="fa-solid fa-bolt"></i><br>FX Engine</div>
-  </div>
-</section>
-
-<section class="block">
-  <h2>Tap. Watch. Feel.</h2>
-  <div class="handles">
-    <a href="https://www.instagram.com/avfx_.176" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://youtube.com/@avfx_.176" target="_blank"><i class="fab fa-youtube"></i></a>
-  </div>
-</section>
-
-<section class="contact">
-  <h2>DROP A VISION</h2>
-  <a href="mailto:avfx.edits17@gmail.com">START</a>
-</section>
-
-<footer>
-  AVFX — Scroll back. You missed something.
-</footer>
-
-</body>
+  </style></head>
+<body>  <!-- INTRO -->  <div id="intro">
+    <div class="lightning"></div>
+    <div class="crack">AVFX</div>
+  </div>  <!-- MAIN -->  <header>
+    <div>
+      <h1>AVFX</h1>
+      <p>ARTISTIC VISUAL EFFECTS</p>
+      <p><strong>EDITS THAT HIT DIFFERENT</strong></p>
+      <div class="scroll-down">Scroll to enter the universe ↓</div>
+    </div>
+  </header>  <section>
+    <div class="title">What I Do</div>
+    <div class="subtitle">Not limited to one genre. I edit what feels powerful.</div>
+    <div class="grid">
+      <div class="card"><i class="fa-solid fa-film"></i><h3>Cinematic Edits</h3><p>Heavy atmosphere, impact frames, cinematic pacing.</p></div>
+      <div class="card"><i class="fa-solid fa-futbol"></i><h3>Sports / Football</h3><p>Speed ramps, shakes, aggressive motion.</p></div>
+      <div class="card"><i class="fa-solid fa-bolt"></i><h3>VFX Shots</h3><p>Particles, flashes, overlays, energy effects.</p></div>
+      <div class="card"><i class="fa-solid fa-mobile"></i><h3>Mobile Editing</h3><p>CapCut • Alight Motion • VN • Custom workflows.</p></div>
+    </div>
+  </section>  <section>
+    <div class="title">Tools & Techniques</div>
+    <div class="subtitle">Apps are tools. Vision does the real work.</div>
+    <div class="grid">
+      <div class="card"><i class="fa-solid fa-sliders"></i><p>Speed Control & Flow</p></div>
+      <div class="card"><i class="fa-solid fa-layer-group"></i><p>Layered Effects</p></div>
+      <div class="card"><i class="fa-solid fa-wave-square"></i><p>Sound Sync & Beats</p></div>
+      <div class="card"><i class="fa-solid fa-eye"></i><p>Color & Mood Control</p></div>
+    </div>
+  </section>  <section>
+    <div class="title">Connect With AVFX</div>
+    <div class="handles">
+      <a href="https://www.instagram.com/avfx_.176" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
+      <a href="https://youtube.com/@avfx_.176" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a>
+      <a href="mailto:avfx.edits17@gmail.com"><i class="fa-solid fa-envelope"></i> Drop a Mail</a>
+    </div>
+  </section>  <footer>
+    © AVFX — Edits That Hit Different
+  </footer>  <script>
+    setTimeout(()=>{
+      document.getElementById('intro').style.display='none'
+    },1800)
+  </script></body>
 </html>
