@@ -12,27 +12,28 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{
 font-family:'Montserrat',sans-serif;
-background:#070a12;
+background:#060912;
 color:#fff;
 overflow-x:hidden;
 }
 
 /* BACKGROUND */
 .bg{
-position:fixed;inset:0;z-index:-1;
+position:fixed;inset:0;z-index:-2;
 background:
-radial-gradient(circle at 20% 20%,#1e3a8a66,transparent 45%),
-radial-gradient(circle at 80% 80%,#2563eb66,transparent 40%),
+radial-gradient(circle at 15% 20%,#1e40af55,transparent 45%),
+radial-gradient(circle at 85% 75%,#2563eb55,transparent 40%),
 linear-gradient(180deg,#05070c,#020409);
 }
 
 /* HERO */
 .hero{
-height:90vh;
+height:85vh;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
+position:relative;
 }
 .hero h1{
 font-size:clamp(4rem,10vw,7rem);
@@ -40,99 +41,137 @@ font-weight:900;
 letter-spacing:10px;
 }
 .hero .sub{
-margin-top:8px;
 font-size:.7rem;
 letter-spacing:4px;
 color:#9fb5ff;
+margin-top:6px;
 }
 .hero .tag{
-margin-top:6px;
 font-size:.75rem;
 letter-spacing:3px;
 opacity:.9;
+margin-top:4px;
 }
 
-/* VISUAL ICON STRIP */
-.icon-strip{
-margin-top:50px;
+/* EDITOR HUD */
+.hud{
+position:absolute;
+inset:0;
+pointer-events:none;
+}
+.hud span{
+position:absolute;
+border:1px solid #6aa7ff55;
+border-radius:14px;
+padding:8px 14px;
+font-size:.55rem;
+letter-spacing:2px;
+color:#9fb5ff;
+background:#05070ccc;
+}
+.hud .a{top:18%;left:12%}
+.hud .b{top:22%;right:14%}
+.hud .c{bottom:24%;left:16%}
+
+/* VISUAL SOFTWARE PANEL */
+.software{
+margin-top:45px;
 display:flex;
 justify-content:center;
 gap:26px;
-flex-wrap:wrap;
 }
-.icon-strip i{
-font-size:1.6rem;
-color:#6aa7ff;
-opacity:.85;
-}
-
-/* PANEL */
-.panel{
-padding:60px 20px;
-max-width:1100px;
-margin:auto;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:28px;
-}
-.card{
-background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.02));
-border:1px solid rgba(255,255,255,.18);
-border-radius:22px;
-padding:36px 24px;
-text-align:center;
-backdrop-filter:blur(14px);
-}
-.card i{
-font-size:2.6rem;
-color:#6aa7ff;
-margin-bottom:16px;
-}
-.card span{
-font-size:.7rem;
-letter-spacing:2px;
-opacity:.85;
-}
-
-/* TOOLS */
-.tools{
-padding:40px 20px;
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:16px;
-}
-.tool{
-width:54px;height:54px;
-border-radius:50%;
+.soft{
+width:62px;height:62px;
+border-radius:18px;
+background:linear-gradient(180deg,#1e293b,#020617);
 border:1px solid #6aa7ff55;
 display:flex;
 align-items:center;
 justify-content:center;
-color:#9fb5ff;
-font-size:1.2rem;
+font-size:1.6rem;
+color:#6aa7ff;
+}
+
+/* MAIN EDIT PANEL */
+.panel{
+max-width:1100px;
+margin:auto;
+padding:50px 20px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:22px;
+}
+.block{
+background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.02));
+border:1px solid rgba(255,255,255,.18);
+border-radius:22px;
+padding:30px;
+text-align:center;
+backdrop-filter:blur(14px);
+}
+.block i{
+font-size:2.4rem;
+color:#6aa7ff;
+margin-bottom:12px;
+}
+.block small{
+font-size:.6rem;
+letter-spacing:2px;
+opacity:.8;
+}
+
+/* GRAPH / TIMELINE DECOR */
+.timeline{
+max-width:900px;
+margin:40px auto;
+height:70px;
+border-radius:20px;
+background:linear-gradient(90deg,#1e3a8a55,#020617);
+border:1px solid #6aa7ff55;
+position:relative;
+}
+.timeline::before{
+content:'';
+position:absolute;
+left:20%;
+top:15%;
+height:70%;
+width:2px;
+background:#6aa7ff;
+}
+.timeline::after{
+content:'';
+position:absolute;
+right:30%;
+top:30%;
+height:40%;
+width:2px;
+background:#9fb5ff;
 }
 
 /* LINKS */
 .links{
-padding:50px 20px;
 display:flex;
 justify-content:center;
-gap:30px;
+gap:28px;
+padding:40px 0;
 }
 .links a{
-color:#fff;
-font-size:1.6rem;
-opacity:.85;
-transition:.2s;
+width:58px;height:58px;
+border-radius:50%;
+background:#0b1224;
+border:1px solid #6aa7ff55;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:1.4rem;
+color:#9fb5ff;
 }
-.links a:hover{opacity:1;color:#6aa7ff}
 
 footer{
 text-align:center;
-padding:20px;
+padding:16px;
 font-size:.6rem;
-letter-spacing:1px;
 opacity:.6;
 }
 </style>
@@ -141,41 +180,36 @@ opacity:.6;
 <body>
 <div class="bg"></div>
 
-<!-- HERO -->
 <section class="hero">
+<div class="hud">
+<span class="a">TIMELINE</span>
+<span class="b">MASK</span>
+<span class="c">COLOR</span>
+</div>
+
 <div>
 <h1>AVFX</h1>
 <div class="sub">ARTISTIC VISUAL EFFECTS</div>
 <div class="tag">EDITS THAT HIT DIFFERENT</div>
 
-<div class="icon-strip">
-<i class="fa-solid fa-film"></i>
-<i class="fa-solid fa-bolt"></i>
-<i class="fa-solid fa-gamepad"></i>
-<i class="fa-solid fa-sliders"></i>
-<i class="fa-solid fa-palette"></i>
+<div class="software">
+<div class="soft"><i class="fa-solid fa-scissors"></i></div>
+<div class="soft"><i class="fa-solid fa-wave-square"></i></div>
+<div class="soft"><i class="fa-solid fa-layer-group"></i></div>
+<div class="soft"><i class="fa-solid fa-droplet"></i></div>
 </div>
 </div>
 </section>
 
-<!-- EDIT PANEL -->
 <section class="panel">
-<div class="card"><i class="fa-solid fa-film"></i><span>CINEMATIC</span></div>
-<div class="card"><i class="fa-solid fa-bolt"></i><span>REELS</span></div>
-<div class="card"><i class="fa-solid fa-gamepad"></i><span>GAMING</span></div>
-<div class="card"><i class="fa-solid fa-sliders"></i><span>COLOR</span></div>
+<div class="block"><i class="fa-solid fa-film"></i><small>CINEMATIC</small></div>
+<div class="block"><i class="fa-solid fa-bolt"></i><small>REELS</small></div>
+<div class="block"><i class="fa-solid fa-gamepad"></i><small>GAMING</small></div>
+<div class="block"><i class="fa-solid fa-palette"></i><small>COLOR</small></div>
 </section>
 
-<!-- TOOLS ICONS -->
-<section class="tools">
-<div class="tool"><i class="fa-solid fa-scissors"></i></div>
-<div class="tool"><i class="fa-solid fa-wave-square"></i></div>
-<div class="tool"><i class="fa-solid fa-droplet"></i></div>
-<div class="tool"><i class="fa-solid fa-layer-group"></i></div>
-<div class="tool"><i class="fa-solid fa-play"></i></div>
-</section>
+<div class="timeline"></div>
 
-<!-- LINKS -->
 <section class="links">
 <a href="https://www.instagram.com/avfx_.176" target="_blank"><i class="fa-brands fa-instagram"></i></a>
 <a href="https://youtube.com/@avfx_.176" target="_blank"><i class="fa-brands fa-youtube"></i></a>
