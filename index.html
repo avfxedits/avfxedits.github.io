@@ -2,123 +2,173 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AVFX — EDITS THAT HIT DIFFERENT</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+<title>AVFX — Artistic Visual Effects</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
 font-family:'Montserrat',sans-serif;
-background:radial-gradient(1200px 600px at 50% -10%,#101736,#050608 55%,#000 100%);
-color:#eee;overflow-x:hidden
+background:#05070c;
+color:#eaeaea;
+overflow-x:hidden;
 }
 
-/* subtle grain */
-body:before{
-content:"";position:fixed;inset:0;
-background:url('https://grainy-gradients.vercel.app/noise.svg');
-opacity:.06;pointer-events:none;z-index:0
+/* CINEMATIC BACKGROUND */
+.bg{
+position:fixed;inset:-30%;z-index:-2;
+background:
+radial-gradient(circle at 15% 20%,#1c2d55,transparent 45%),
+radial-gradient(circle at 85% 80%,#2b5cff,transparent 40%),
+radial-gradient(circle at 50% 50%,#0b1328,transparent 60%);
+animation:drift 18s infinite alternate;
 }
-
-/* ambient glow shapes */
-.bg-shape{position:fixed;filter:blur(80px);opacity:.35;z-index:0}
-.bg-1{width:420px;height:420px;background:#5f6cff;top:10%;left:-120px}
-.bg-2{width:520px;height:520px;background:#7a8bff;bottom:-160px;right:-120px}
-
-section{position:relative;z-index:2}
+@keyframes drift{from{transform:translate(0,0)}to{transform:translate(-120px,-90px)}}
 
 /* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 20px}
-.hero h1{
-font-size:clamp(3.6rem,9vw,6.4rem);font-weight:800;letter-spacing:6px;
-background:linear-gradient(90deg,#7f8cff,#b8c1ff,#fff);
--webkit-background-clip:text;-webkit-text-fill-color:transparent
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
 }
-.hero p{margin-top:14px;font-size:.9rem;letter-spacing:3px;color:#bdbdbd}
-.scroll{margin-top:64px;font-size:.7rem;letter-spacing:2px;color:#777}
+.hero h1{
+font-size:clamp(4rem,10vw,7rem);
+font-weight:900;
+letter-spacing:10px;
+}
+.hero .sub{
+margin-top:10px;
+font-size:.75rem;
+letter-spacing:4px;
+color:#9fb5ff;
+}
+.hero .tag{
+margin-top:6px;
+font-size:.85rem;
+letter-spacing:3px;
+color:#ffffffcc;
+}
 
-/* floating editor elements */
-.floating i{position:absolute;color:#7f8cff;opacity:.08;font-size:120px;animation:float 22s infinite linear}
-.floating i:nth-child(1){top:12%;left:6%}
-.floating i:nth-child(2){top:62%;left:12%;animation-duration:26s}
-.floating i:nth-child(3){top:28%;right:8%;animation-duration:30s}
-.floating i:nth-child(4){bottom:18%;right:14%;animation-duration:34s}
-@keyframes float{from{transform:translateY(0)}to{transform:translateY(-140px)}}
+.scroll{
+margin-top:70px;
+font-size:.7rem;
+letter-spacing:2px;
+color:#888;
+}
 
-/* marquee tools */
-.marquee{border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);overflow:hidden}
-.marquee-track{display:flex;gap:48px;padding:22px 0;animation:mar 22s linear infinite}
-.marquee i{font-size:1.6rem;color:#9aa3ff;opacity:.85}
-@keyframes mar{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* SECTIONS */
+section{padding:110px 20px}
+.container{max-width:1150px;margin:auto}
 
-/* SECTION */
-.container{max-width:1200px;margin:auto;padding:120px 22px}
-.title{font-size:2.5rem;margin-bottom:10px}
-.sub{color:#9a9a9a;margin-bottom:56px;font-size:.95rem}
-
-/* GRID */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:34px}
+/* ICON DOMINANT GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:40px
+}
 .card{
-background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,0));
+background:rgba(255,255,255,.06);
 border:1px solid rgba(255,255,255,.12);
-border-radius:20px;padding:34px;backdrop-filter:blur(10px);
+border-radius:22px;
+padding:40px 26px;
+text-align:center;
+backdrop-filter:blur(12px);
 transition:.35s
 }
-.card:hover{transform:translateY(-10px);border-color:#7f8cff}
-.card i{font-size:1.9rem;color:#7f8cff;margin-bottom:16px}
-.card h3{margin-bottom:10px}
-.card p{font-size:.88rem;color:#d0d0d0;line-height:1.6}
+.card:hover{transform:translateY(-12px) scale(1.05);border-color:#6aa7ff}
+.card i{font-size:3rem;color:#6aa7ff;margin-bottom:20px}
+.card h3{font-size:1rem;letter-spacing:2px}
 
-/* statement */
-.statement{font-size:clamp(2.2rem,5.6vw,4.2rem);font-weight:800;line-height:1.15;text-align:center;padding:140px 20px}
+/* BIG STATEMENT */
+.statement{
+text-align:center;
+font-size:clamp(2.2rem,5vw,4.2rem);
+font-weight:900;
+line-height:1.2;
+opacity:.9
+}
 
-/* connect */
-.links a{display:flex;align-items:center;gap:14px;margin-bottom:18px;padding:18px;border-radius:18px;background:linear-gradient(90deg,#7f8cff,#9ea7ff);color:#000;text-decoration:none;font-weight:600;transition:.25s}
-.links a:hover{filter:brightness(1.15);transform:scale(1.04)}
+/* TOOL TAGS */
+.tools{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:18px
+}
+.tool{
+padding:14px 24px;
+border-radius:40px;
+background:rgba(255,255,255,.08);
+font-size:.8rem;
+letter-spacing:1px
+}
 
-footer{text-align:center;padding:60px 20px;color:#777;font-size:.75rem}
+/* LINKS */
+.links{
+max-width:380px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:22px
+}
+.links a{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:12px;
+padding:18px;
+border-radius:22px;
+font-weight:700;
+text-decoration:none;
+background:linear-gradient(90deg,#6aa7ff,#9fb5ff);
+color:#05070c;
+transition:.3s
+}
+.links a:hover{transform:scale(1.06)}
+
+footer{
+text-align:center;
+padding:50px;
+font-size:.75rem;
+color:#9fb3d1
+}
 </style></head>
-<body><div class="bg-shape bg-1"></div>
-<div class="bg-shape bg-2"></div><div class="floating">
-<i class="fa-solid fa-sliders"></i>
-<i class="fa-solid fa-wave-square"></i>
-<i class="fa-solid fa-layer-group"></i>
-<i class="fa-solid fa-chart-line"></i>
-</div><section class="hero">
+<body><div class="bg"></div><!-- HERO --><div class="hero">
 <div>
 <h1>AVFX</h1>
-<p>ARTISTIC VISUAL EFFECTS</p>
-<p style="margin-top:6px;font-size:.8rem;letter-spacing:4px">EDITS THAT HIT DIFFERENT</p>
+<div class="sub">ARTISTIC VISUAL EFFECTS</div>
+<div class="tag">EDITS THAT HIT DIFFERENT</div>
 <div class="scroll">SCROLL ↓</div>
 </div>
-</section><div class="marquee">
-  <div class="marquee-track">
-    <i class="fa-solid fa-bezier-curve"></i><i class="fa-solid fa-layer-group"></i><i class="fa-solid fa-wave-square"></i><i class="fa-solid fa-clock"></i><i class="fa-solid fa-palette"></i><i class="fa-solid fa-bolt"></i>
-    <i class="fa-solid fa-bezier-curve"></i><i class="fa-solid fa-layer-group"></i><i class="fa-solid fa-wave-square"></i><i class="fa-solid fa-clock"></i><i class="fa-solid fa-palette"></i><i class="fa-solid fa-bolt"></i>
-  </div>
-</div><section class="container">
-<h2 class="title">What I Edit</h2>
-<p class="sub">Visuals that feel heavy, not trendy.</p>
+</div><!-- WHAT I EDIT --><section>
+<div class="container">
 <div class="grid">
-<div class="card"><i class="fa-solid fa-film"></i><h3>Cinematic Visuals</h3><p>Atmosphere-driven edits with deliberate pacing.</p></div>
-<div class="card"><i class="fa-solid fa-bolt"></i><h3>Speed Ramps</h3><p>Velocity curves synced to impact moments.</p></div>
-<div class="card"><i class="fa-solid fa-eye"></i><h3>Visual Focus</h3><p>Masking, focus pulls, controlled attention.</p></div>
-<div class="card"><i class="fa-solid fa-palette"></i><h3>Color & Mood</h3><p>Curves, grading, tonal consistency.</p></div>
+<div class="card"><i class="fa-solid fa-film"></i><h3>CINEMATIC EDITS</h3></div>
+<div class="card"><i class="fa-solid fa-bolt"></i><h3>REELS & SHORTS</h3></div>
+<div class="card"><i class="fa-solid fa-gamepad"></i><h3>GAMING VISUALS</h3></div>
+<div class="card"><i class="fa-solid fa-wand-magic-sparkles"></i><h3>IMPACT CUTS</h3></div>
 </div>
-</section><section class="statement">I DON'T ADD EFFECTS.<br>I DESIGN IMPACT.</section><section class="container">
-<h2 class="title">How I Craft</h2>
-<p class="sub">Process over presets.</p>
-<div class="grid">
-<div class="card"><i class="fa-solid fa-bezier-curve"></i><h3>Motion Graphs</h3><p>Custom easing and rhythm.</p></div>
-<div class="card"><i class="fa-solid fa-layer-group"></i><h3>Layer Discipline</h3><p>Depth, hierarchy, precision.</p></div>
-<div class="card"><i class="fa-solid fa-clock"></i><h3>Timing</h3><p>Frame-accurate storytelling.</p></div>
 </div>
-</section><section class="container">
-<h2 class="title">Connect</h2>
-<p class="sub">Watch the edits. Feel the difference.</p>
+</section><!-- STATEMENT --><section class="statement">
+VISUALS FIRST.<br>NO EXPLANATIONS.
+</section><!-- TOOLS --><section>
+<div class="container">
+<div class="tools">
+<div class="tool">CapCut</div>
+<div class="tool">Alight Motion</div>
+<div class="tool">Keyframes</div>
+<div class="tool">Velocity</div>
+<div class="tool">Masking</div>
+<div class="tool">Motion Blur</div>
+<div class="tool">Color Grading</div>
+</div>
+</div>
+</section><!-- CONNECT --><section>
 <div class="links">
 <a href="https://www.instagram.com/avfx_.176" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
 <a href="https://youtube.com/@avfx_.176" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a>
-<a href="mailto:avfx.edits17@gmail.com"><i class="fa-solid fa-paper-plane"></i> avfx.edits17@gmail.com</a>
+<a href="mailto:avfx.edits17@gmail.com"><i class="fa-solid fa-envelope"></i> avfx.edits17@gmail.com</a>
 </div>
-</section><footer>© AVFX • Built for impact</footer></body>
+</section><footer>© AVFX — Visuals over words</footer></body>
 </html>
