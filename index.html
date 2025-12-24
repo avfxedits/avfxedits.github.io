@@ -1,157 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>AVFX EDITS | Professional Video Editor</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AVFX</title>
 
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap');
 
-    body {
-      min-height: 100vh;
-      background: linear-gradient(145deg, #050505, #111);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Montserrat',sans-serif;
+}
 
-    .card {
-      width: 360px;
-      background: rgba(15,15,15,0.95);
-      border-radius: 22px;
-      padding: 35px 28px;
-      text-align: center;
-      box-shadow: 0 0 50px rgba(0,255,255,0.12);
-      animation: fadeUp 1s ease;
-    }
+html{scroll-behavior:smooth}
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+body{
+  background:linear-gradient(180deg,#050814,#000);
+  color:#fff;
+  overflow-x:hidden;
+}
 
-    .title {
-      font-size: 34px;
-      font-weight: 600;
-      letter-spacing: 2px;
-    }
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
 
-    .subtitle {
-      font-size: 13px;
-      opacity: 0.7;
-      margin-top: 4px;
-    }
+.hero h1{
+  font-size:4.5rem;
+  font-weight:900;
+  letter-spacing:7px;
+  text-shadow:0 0 30px #4da3ff;
+}
 
-    .divider {
-      width: 60px;
-      height: 3px;
-      background: #00ffff;
-      margin: 18px auto;
-      border-radius: 10px;
-    }
+.sub{
+  margin-top:10px;
+  font-size:0.9rem;
+  letter-spacing:6px;
+  opacity:0.6;
+}
 
-    .bio {
-      font-size: 13px;
-      line-height: 1.6;
-      opacity: 0.85;
-      margin-bottom: 22px;
-    }
+.tagline{
+  margin-top:25px;
+  font-size:1.1rem;
+  letter-spacing:4px;
+  color:#9cc9ff;
+  text-shadow:0 0 18px #4da3ff;
+}
 
-    .tools {
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-      font-size: 22px;
-      margin-bottom: 25px;
-      opacity: 0.85;
-    }
+/* FLOATING FX */
+.fx{
+  position:absolute;
+  font-size:1.3rem;
+  opacity:0.12;
+  animation:float 9s infinite linear;
+}
 
-    .tools i {
-      transition: 0.3s;
-    }
+@keyframes float{
+  from{transform:translateY(110vh)}
+  to{transform:translateY(-120vh)}
+}
 
-    .tools i:hover {
-      color: #00ffff;
-      transform: scale(1.25);
-    }
+/* BLOCKS */
+.block{
+  padding:100px 8%;
+}
 
-    .btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin: 12px 0;
-      padding: 14px;
-      border-radius: 30px;
-      text-decoration: none;
-      color: white;
-      background: linear-gradient(135deg, #141414, #222);
-      border: 1px solid rgba(255,255,255,0.08);
-      font-weight: 500;
-      transition: 0.3s;
-    }
+.block h2{
+  font-size:1.9rem;
+  margin-bottom:30px;
+}
 
-    .btn:hover {
-      background: linear-gradient(135deg, #00ffff, #009999);
-      color: #000;
-    }
+.line{
+  font-size:1rem;
+  opacity:0.75;
+  margin:14px 0;
+}
 
-    .footer {
-      margin-top: 22px;
-      font-size: 11px;
-      opacity: 0.45;
-    }
-  </style>
+/* TOOLS GRID */
+.tools{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:30px;
+  margin-top:40px;
+}
+
+.tool{
+  background:rgba(255,255,255,0.04);
+  padding:25px;
+  border-radius:18px;
+  text-align:center;
+  backdrop-filter:blur(12px);
+}
+
+.tool i{
+  font-size:2.3rem;
+  margin-bottom:12px;
+  color:#7fb8ff;
+}
+
+/* HANDLES */
+.handles{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  margin-top:40px;
+}
+
+.handles a{
+  font-size:2rem;
+  color:#fff;
+  opacity:0.8;
+  transition:0.3s;
+}
+
+.handles a:hover{
+  opacity:1;
+  color:#7fb8ff;
+}
+
+/* CONTACT */
+.contact{
+  text-align:center;
+  padding:120px 10%;
+}
+
+.contact a{
+  display:inline-block;
+  margin-top:30px;
+  padding:14px 34px;
+  border-radius:40px;
+  border:1px solid #7fb8ff;
+  color:#7fb8ff;
+  text-decoration:none;
+  letter-spacing:4px;
+}
+
+.contact a:hover{
+  background:#7fb8ff;
+  color:#000;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:60px 0;
+  opacity:0.5;
+  font-size:0.85rem;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="card">
-    <div class="title">AVFX EDITS</div>
-    <div class="subtitle">Professional Video Editor</div>
+<!-- FLOATING SYMBOLS -->
+<div class="fx" style="left:12%">◇</div>
+<div class="fx" style="left:28%">▢</div>
+<div class="fx" style="left:46%">⚡</div>
+<div class="fx" style="left:63%">◐</div>
+<div class="fx" style="left:80%">⟶</div>
 
-    <div class="divider"></div>
+<section class="hero">
+  <h1>AVFX</h1>
+  <div class="sub">ARTISTIC VISUAL EFFECTS</div>
+  <div class="tagline">EDITS THAT HITS DIFFERENT</div>
+</section>
 
-    <div class="bio">
-      High-impact reels, shorts & cinematic edits.<br>
-      Focused on clean cuts, timing & visual flow.
-    </div>
+<section class="block">
+  <h2>Visuals Speak</h2>
+  <div class="line">Made on phone. Felt like cinema.</div>
+  <div class="line">Frames over filters.</div>
+  <div class="line">Speed. Flow. Impact.</div>
+</section>
 
-    <div class="tools">
-      <i class="fa-solid fa-film"></i>
-      <i class="fa-solid fa-scissors"></i>
-      <i class="fa-solid fa-wand-magic-sparkles"></i>
-      <i class="fa-solid fa-music"></i>
-      <i class="fa-solid fa-bolt"></i>
-    </div>
-
-    <a class="btn" href="https://instagram.com/avfx_.176" target="_blank">
-      <i class="fab fa-instagram"></i> Instagram
-    </a>
-
-    <a class="btn" href="https://youtube.com/@avfx_.176?si=FbWc05n37hR42Si-" target="_blank">
-      <i class="fab fa-youtube"></i> YouTube
-    </a>
-
-    <a class="btn" href="mailto: avfx.edits17@gmail.com">
-      <i class="fa-solid fa-envelope"></i> Contact via Email
-    </a>
-
-    <div class="footer">
-      © 2025 AVFX EDITS · All Rights Reserved
-    </div>
+<section class="block">
+  <h2>Editing Language</h2>
+  <div class="tools">
+    <div class="tool"><i class="fa-solid fa-scissors"></i><br>Cut Flow</div>
+    <div class="tool"><i class="fa-solid fa-layer-group"></i><br>Layers</div>
+    <div class="tool"><i class="fa-solid fa-wave-square"></i><br>Speed Ramps</div>
+    <div class="tool"><i class="fa-solid fa-bezier-curve"></i><br>Motion Curves</div>
+    <div class="tool"><i class="fa-solid fa-mask"></i><br>Masks</div>
+    <div class="tool"><i class="fa-solid fa-palette"></i><br>Color FX</div>
   </div>
+</section>
+
+<section class="block">
+  <h2>Tools I Bend</h2>
+  <div class="tools">
+    <div class="tool"><i class="fa-brands fa-capcut"></i><br>CapCut</div>
+    <div class="tool"><i class="fa-solid fa-play"></i><br>Alight Motion</div>
+    <div class="tool"><i class="fa-solid fa-film"></i><br>VN</div>
+    <div class="tool"><i class="fa-solid fa-bolt"></i><br>FX Engine</div>
+  </div>
+</section>
+
+<section class="block">
+  <h2>Tap. Watch. Feel.</h2>
+  <div class="handles">
+    <a href="https://www.instagram.com/avfx_.176" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://youtube.com/@avfx_.176" target="_blank"><i class="fab fa-youtube"></i></a>
+  </div>
+</section>
+
+<section class="contact">
+  <h2>DROP A VISION</h2>
+  <a href="mailto:avfx.edits17@gmail.com">START</a>
+</section>
+
+<footer>
+  AVFX — Scroll back. You missed something.
+</footer>
 
 </body>
 </html>
