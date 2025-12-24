@@ -1,141 +1,208 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AVFX — Edits That Hit Different</title>  <!-- Google Font -->  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">  <!-- Icons -->  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  <style>
-    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-    body{background:#05010a;color:#fff;overflow-x:hidden}
+<meta charset="UTF-8">
+<title>AVFX EDITS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    /* ================= LOADER ================= */
-    #intro{
-      position:fixed;inset:0;z-index:9999;
-      background:radial-gradient(circle at center,#12001f,#020006);
-      display:flex;align-items:center;justify-content:center;
-      flex-direction:column;
-    }
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    .lightning{
-      position:absolute;inset:0;
-      background:url('https://i.imgur.com/9Q9ZQZy.png') center/cover no-repeat;
-      opacity:0;animation:flash 1.5s ease forwards;
-    }
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-    @keyframes flash{
-      0%{opacity:0}
-      20%{opacity:1}
-      40%{opacity:0}
-      60%{opacity:1}
-      100%{opacity:0}
-    }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+body{background:#05070c;color:#fff;overflow-x:hidden}
 
-    .crack{
-      font-size:56px;font-weight:800;letter-spacing:6px;
-      text-shadow:0 0 30px #a855f7;
-      animation:shake 1s ease;
-    }
+/* INTRO */
+#intro{
+position:fixed;inset:0;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:9999;
+overflow:hidden
+}
+.flash{
+position:absolute;inset:0;
+background:white;
+opacity:0;
+animation:flash 2.5s ease
+}
+@keyframes flash{
+0%,70%,100%{opacity:0}
+72%{opacity:1}
+75%{opacity:0}
+}
+.crack{
+position:absolute;
+width:120%;
+height:120%;
+background:url("https://i.imgur.com/6ZQZQ6m.png") center/cover no-repeat;
+opacity:0;
+animation:crack 2.5s forwards
+}
+@keyframes crack{
+0%{opacity:0;transform:scale(1.2)}
+70%{opacity:1}
+100%{opacity:0;transform:scale(2)}
+}
+.intro-text{
+font-size:4rem;
+font-weight:800;
+letter-spacing:6px;
+opacity:0;
+animation:textIn 1.5s forwards .8s
+}
+@keyframes textIn{to{opacity:1}}
 
-    @keyframes shake{
-      0%{transform:translate(0)}
-      25%{transform:translate(-3px,2px)}
-      50%{transform:translate(3px,-2px)}
-      75%{transform:translate(-2px,-3px)}
-      100%{transform:translate(0)}
-    }
+/* MAIN SITE */
+#site{display:none;animation:reveal 1s ease forwards}
+@keyframes reveal{
+from{opacity:0;transform:scale(.98)}
+to{opacity:1;transform:scale(1)}
+}
 
-    /* ================= MAIN ================= */
-    header{
-      min-height:100vh;display:flex;align-items:center;justify-content:center;
-      text-align:center;padding:40px;
-      background:linear-gradient(160deg,#0b0018,#020006);
-    }
+header{
+height:100vh;
+background:radial-gradient(circle at top,#0f1b3d,#05070c 70%);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px
+}
+header h1{
+font-size:4rem;
+font-weight:800;
+background:linear-gradient(90deg,#4da6ff,#9d4dff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent
+}
+header h2{
+margin-top:10px;
+letter-spacing:3px;
+opacity:.8
+}
+header p{
+max-width:700px;
+margin-top:20px;
+opacity:.85;
+line-height:1.7
+}
+.btns a{
+display:inline-block;
+margin:25px 10px;
+padding:14px 28px;
+border-radius:30px;
+border:1px solid #4da6ff;
+color:#fff;
+text-decoration:none;
+transition:.3s
+}
+.btns a:hover{background:#4da6ff;color:#000}
 
-    header h1{
-      font-size:64px;font-weight:800;
-      background:linear-gradient(90deg,#a855f7,#ec4899);
-      -webkit-background-clip:text;color:transparent;
-    }
+section{padding:100px 10%}
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:30px
+}
+.card{
+background:rgba(255,255,255,.05);
+padding:30px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+transition:.4s
+}
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 40px #4da6ff55
+}
+.card i{
+font-size:2.2rem;
+color:#4da6ff;
+margin-bottom:15px
+}
 
-    header p{margin-top:20px;font-size:18px;opacity:.9}
+footer{
+padding:60px 10%;
+background:#02040a;
+text-align:center
+}
+footer a{
+color:#4da6ff;
+margin:0 12px;
+font-size:1.6rem
+}
+</style>
+</head>
 
-    .scroll-down{margin-top:60px;font-size:14px;opacity:.6}
+<body>
 
-    section{padding:100px 20px;max-width:1100px;margin:auto}
+<!-- INTRO -->
+<div id="intro">
+<div class="flash"></div>
+<div class="crack"></div>
+<div class="intro-text">AVFX</div>
+</div>
 
-    .title{
-      font-size:36px;font-weight:700;margin-bottom:20px;
-    }
+<!-- SITE -->
+<div id="site">
+<header>
+<h1>AVFX</h1>
+<h2>EDITS THAT HIT DIFFERENT</h2>
+<p>
+Artistic Visual Effects inspired edits — football, gaming, cinematic,
+marvel moments and raw visual storytelling.
+Not trends. Pure impact.
+</p>
 
-    .subtitle{opacity:.7;margin-bottom:50px}
+<div class="btns">
+<a href="https://instagram.com/avfx_.176" target="_blank">
+<i class="fab fa-instagram"></i> Instagram
+</a>
+<a href="https://youtube.com/@avfx_.176" target="_blank">
+<i class="fab fa-youtube"></i> YouTube
+</a>
+</div>
+</header>
 
-    .grid{
-      display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:30px
-    }
+<section>
+<h2 style="margin-bottom:40px">Editing Arsenal</h2>
+<div class="grid">
+<div class="card"><i class="fa-solid fa-bolt"></i><h3>Impact Frames</h3><p>Lightning, shakes, glitches & power shots.</p></div>
+<div class="card"><i class="fa-solid fa-scissors"></i><h3>Precision Cuts</h3><p>Frame-accurate rhythm based editing.</p></div>
+<div class="card"><i class="fa-solid fa-eye"></i><h3>Visual Sense</h3><p>Mood, emotion & cinematic flow.</p></div>
+</div>
+</section>
 
-    .card{
-      background:rgba(255,255,255,.05);
-      border-radius:18px;padding:30px;
-      box-shadow:0 0 40px rgba(168,85,247,.15);
-      transition:.3s
-    }
+<section>
+<h2 style="margin-bottom:40px">Tools & Vision</h2>
+<div class="grid">
+<div class="card"><i class="fa-solid fa-layer-group"></i><p>Transitions • Overlays • Motion Blur</p></div>
+<div class="card"><i class="fa-solid fa-fire"></i><p>Energy based visual storytelling</p></div>
+<div class="card"><i class="fa-solid fa-music"></i><p>Beat sync & sound driven edits</p></div>
+</div>
+</section>
 
-    .card:hover{transform:translateY(-8px)}
+<footer>
+<p>DROP A VISION</p>
+<a href="mailto:avfx.edits17@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+<a href="https://instagram.com/avfx_.176"><i class="fab fa-instagram"></i></a>
+<a href="https://youtube.com/@avfx_.176"><i class="fab fa-youtube"></i></a>
+</footer>
+</div>
 
-    .card i{
-      font-size:32px;margin-bottom:20px;
-      color:#ec4899
-    }
+<script>
+setTimeout(()=>{
+document.getElementById("intro").style.display="none";
+document.getElementById("site").style.display="block";
+},2600);
+</script>
 
-    .handles a{
-      display:flex;align-items:center;gap:12px;
-      padding:18px;border-radius:40px;
-      background:linear-gradient(90deg,#a855f7,#ec4899);
-      color:#fff;text-decoration:none;font-weight:600;
-      margin-bottom:18px;justify-content:center
-    }
-
-    footer{text-align:center;padding:60px 20px;opacity:.6}
-
-  </style></head>
-<body>  <!-- INTRO -->  <div id="intro">
-    <div class="lightning"></div>
-    <div class="crack">AVFX</div>
-  </div>  <!-- MAIN -->  <header>
-    <div>
-      <h1>AVFX</h1>
-      <p>ARTISTIC VISUAL EFFECTS</p>
-      <p><strong>EDITS THAT HIT DIFFERENT</strong></p>
-      <div class="scroll-down">Scroll to enter the universe ↓</div>
-    </div>
-  </header>  <section>
-    <div class="title">What I Do</div>
-    <div class="subtitle">Not limited to one genre. I edit what feels powerful.</div>
-    <div class="grid">
-      <div class="card"><i class="fa-solid fa-film"></i><h3>Cinematic Edits</h3><p>Heavy atmosphere, impact frames, cinematic pacing.</p></div>
-      <div class="card"><i class="fa-solid fa-futbol"></i><h3>Sports / Football</h3><p>Speed ramps, shakes, aggressive motion.</p></div>
-      <div class="card"><i class="fa-solid fa-bolt"></i><h3>VFX Shots</h3><p>Particles, flashes, overlays, energy effects.</p></div>
-      <div class="card"><i class="fa-solid fa-mobile"></i><h3>Mobile Editing</h3><p>CapCut • Alight Motion • VN • Custom workflows.</p></div>
-    </div>
-  </section>  <section>
-    <div class="title">Tools & Techniques</div>
-    <div class="subtitle">Apps are tools. Vision does the real work.</div>
-    <div class="grid">
-      <div class="card"><i class="fa-solid fa-sliders"></i><p>Speed Control & Flow</p></div>
-      <div class="card"><i class="fa-solid fa-layer-group"></i><p>Layered Effects</p></div>
-      <div class="card"><i class="fa-solid fa-wave-square"></i><p>Sound Sync & Beats</p></div>
-      <div class="card"><i class="fa-solid fa-eye"></i><p>Color & Mood Control</p></div>
-    </div>
-  </section>  <section>
-    <div class="title">Connect With AVFX</div>
-    <div class="handles">
-      <a href="https://www.instagram.com/avfx_.176" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
-      <a href="https://youtube.com/@avfx_.176" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a>
-      <a href="mailto:avfx.edits17@gmail.com"><i class="fa-solid fa-envelope"></i> Drop a Mail</a>
-    </div>
-  </section>  <footer>
-    © AVFX — Edits That Hit Different
-  </footer>  <script>
-    setTimeout(()=>{
-      document.getElementById('intro').style.display='none'
-    },1800)
-  </script></body>
+</body>
 </html>
